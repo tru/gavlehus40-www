@@ -233,22 +233,5 @@
     </div>
   </footer>
 
-  <script>
-    const navLinks = Array.from(document.querySelectorAll('nav a'));
-    const sections = navLinks.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
-    const onScroll = () => {
-      let idx = 0;
-      const fromTop = window.scrollY + 120;
-      for (let i = 0; i < sections.length; i++) {
-        const s = sections[i];
-        if (s.offsetTop <= fromTop) idx = i;
-      }
-      navLinks.forEach((a,i)=>a.classList.toggle('active', i===idx));
-    };
-    document.addEventListener('scroll', onScroll, {passive:true});
-    onScroll();
-
-    document.getElementById('y').textContent = new Date().getFullYear();
-  </script>
 </body>
 </html>
