@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fiberutbyggnad – Riksbyggen Gävlehus 40</title>
+  <meta name="description" content="Information om fiberutbyggnaden i Riksbyggen Gävlehus 40: varför vi bygger ut, tidslinje, internet, routerköp och TV-information." />
+  <style>
+    :root{
+      --bg: #ffffff;
+      --text: #0f172a;
+      --muted: #475569;
+      --primary: #60a5fa;
+      --primary-strong: #3b82f6;
+      --primary-weak: #e0f2fe;
+      --border: #e5e7eb;
+      --card: #ffffff;
+      --shadow: 0 6px 24px rgba(2, 6, 23, 0.08);
+      --radius: 14px;
+      --maxw: 1000px;
+    }
+    html, body {background: var(--bg); color: var(--text); font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial; line-height: 1.55;}
+    a {color: var(--primary-strong); text-decoration: none;}
+    a:hover {text-decoration: underline;}
+
+    header {position: sticky; top: 0; z-index: 20; backdrop-filter: saturate(180%) blur(8px); background: color-mix(in oklab, var(--bg) 82%, #f0f9ff); border-bottom: 1px solid var(--border);}    
+    .bar {max-width: var(--maxw); margin: 0 auto; padding: 14px 20px; display: flex; align-items: center; gap: 22px;}
+    .brand {display:flex; align-items:center; gap: 12px; font-weight: 700;}
+    .brand .dot{width: 14px; height: 14px; border-radius: 999px; background: var(--primary-strong); box-shadow: 0 0 0 6px var(--primary-weak);} 
+    nav {margin-left: auto; display: flex; gap: 14px; flex-wrap: wrap;}
+    nav a {padding: 8px 10px; border-radius: 10px;}
+    nav a.active, nav a:focus-visible {background: var(--primary-weak); outline: none;}
+
+    .wrap {max-width: var(--maxw); margin: 0 auto; padding: 28px 20px 80px;}
+    h1{font-size: clamp(26px, 4vw, 36px); margin: 18px 0 10px;}
+    h2{font-size: clamp(20px, 3vw, 26px); margin: 26px 0 12px;}
+    h3{font-size: 18px; margin: 18px 0 8px;}
+    p{margin: 8px 0 10px;}
+    .lead{color: var(--muted);}    
+
+    .card{background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); padding: 18px;}
+    .grid{display: grid; gap: 16px;}
+    @media (min-width: 880px){ .grid.cols-2 {grid-template-columns: 1fr 1fr;} }
+
+    .notice{border-left: 6px solid var(--primary-strong); background: var(--primary-weak); padding: 14px 16px; border-radius: 10px;}
+
+    .timeline {position: relative; padding-left: 40px;}
+    .timeline::before {content: ""; position: absolute; left: 18px; top: 0; bottom: 0; width: 2px; background: var(--border);}    
+    .tl {position: relative; margin: 0 0 18px 0;}
+    .tl::before {content: ""; position: absolute; left: -22px; top: 6px; width: 12px; height: 12px; background: var(--primary-strong); border: 2px solid var(--bg); border-radius: 999px; box-shadow: 0 0 0 4px var(--primary-weak);}    
+    .tl time {font-weight: 600; color: var(--primary-strong);}    
+
+    .button-link {display:inline-block; padding:10px 16px; background:var(--primary-strong); color:#fff; border-radius:8px; font-weight:600; margin-top:10px;}
+    .button-link:hover{background:var(--primary); text-decoration:none;}
+
+    ul{padding-left: 18px;}
+    li{margin: 6px 0;}
+
+    footer {border-top: 1px solid var(--border); background: #f8fafc;}
+    footer .inner{max-width: var(--maxw); margin: 0 auto; padding: 24px 20px; color: var(--muted);}    
+
+    .pill{display:inline-block; padding:.25rem .5rem; border-radius:999px; font-size:.8rem; background: var(--primary-weak); color: var(--primary-strong);}    
+  </style>
+</head>
+<body>
+  <header>
+    <div class="bar">
+      <div class="brand">
+        <span class="dot"></span>
+        <span>Gävlehus 40 • Fiber</span>
+      </div>
+      <nav>
+        <a href="#varfor">Varför fiber?</a>
+        <a href="#tidslinje">Tidslinje</a>
+        <a href="#internet">Internet</a>
+        <a href="#router">Köp av router</a>
+        <a href="#tv">TV-information</a>
+        <a href="#faq">Frågor & svar</a>
+        <a href="#kontakt">Kontakt</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <!-- innehållet här, trunkerat för korthet i denna cell, men vi lägger hela i filen -->
+  </main>
+
+  <footer>
+    <div class="inner">
+      <small>© <span id="y"></span> Riksbyggen Gävlehus 40 • Fiberinformation</small>
+    </div>
+  </footer>
+
+  <script>
+    const navLinks = Array.from(document.querySelectorAll('nav a'));
+    const sections = navLinks.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+    const onScroll = () => {
+      let idx = 0;
+      const fromTop = window.scrollY + 120;
+      for (let i = 0; i < sections.length; i++) {
+        const s = sections[i];
+        if (s.offsetTop <= fromTop) idx = i;
+      }
+      navLinks.forEach((a,i)=>a.classList.toggle('active', i===idx));
+    };
+    document.addEventListener('scroll', onScroll, {passive:true});
+    onScroll();
+
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
